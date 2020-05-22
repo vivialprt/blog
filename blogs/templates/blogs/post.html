@@ -1,0 +1,18 @@
+{% extends "blogs/base.html" %}
+
+{% block header %}
+  <h3>{{ post.title }}</h3>
+  <p>{{ post.date_added|date:'d M, Y H:i'}}</p>
+{% endblock header %}
+
+{% block content %}
+
+  <p>
+    {% if user == post.owner %}
+      <a href="{% url 'blogs:edit_post' post.id %}">Edit post</a>
+    {% endif %}
+  </p>
+  
+  <p>{{ post.text|linebreaks }}</p>
+
+{% endblock content %}
